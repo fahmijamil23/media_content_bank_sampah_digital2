@@ -5,7 +5,7 @@ dan membandingkan dua skenario atribut (format, tipe, topik, hari, jam, panjang 
 
 ## Isi folder
 - app.py : aplikasi Streamlit
-- app_artifacts.pkl : model Random Forest (pipeline lengkap) beserta rentang ketidakpastian dan opsi input
+- app_artifacts.pkl : model XGBoost (pipeline lengkap) beserta rentang ketidakpastian dan opsi input
 - requirements.txt : dependensi (versi sama dengan saat model dilatih)
 - .streamlit/config.toml : konfigurasi tampilan dan server
 
