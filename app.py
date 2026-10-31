@@ -103,7 +103,7 @@ def logo_base64(path="Logo_Bank_Sampah_Digital.png"):
 
 DISCLAIMER = (
     "<b>Catatan:</b> Angka di sini adalah <b>perkiraan</b> berdasarkan 72 postingan "
-    "Instagram BSD tahun 2025, jadi bukan jaminan hasil. Makin banyak postingan yang "
+    "Instagram Bank Sampah Digital tahun 2025, jadi bukan jaminan hasil. Makin banyak postingan yang "
     "kita catat, makin tepat perkiraannya. Anggap ini sebagai <b>panduan arah</b> "
     "untuk membantu memilih konten, lalu tetap uji langsung di lapangan."
 )
