@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide",
 )
 
-# Warna sesuai logo & website BSD
+# Warna sesuai logo & website Bank Sampah Digital
 HIJAU_TUA = "#2E8B0A"
 HIJAU_GELAP = "#0A7A00"
 HIJAU_MUDA = "#8DB821"
@@ -133,7 +133,7 @@ def halaman_beranda():
     with c1:
         st.button("🚀 Mulai Prediksi", type="primary", on_click=pindah, args=("prediksi",))
     with c2:
-        st.link_button("🌐 Website BSD", "https://banksampahdigital.com/")
+        st.link_button("🌐 Website Bank Sampah Digital", "https://banksampahdigital.com/")
 
     # --- Angka ringkas ---
     s1, s2, s3 = st.columns(3)
@@ -165,7 +165,7 @@ def halaman_beranda():
 
     # --- Tips viral ---
     st.markdown('<div class="judul-seksi">💡 Saran Praktis untuk Tim Media</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-seksi">Dirangkum dari pola postingan BSD yang paling banyak mendapat respons.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-seksi">Dirangkum dari pola postingan Bank Sampah Digital yang paling banyak mendapat respons.</div>', unsafe_allow_html=True)
 
     tips = [
         ("🤝", "Ajak berkolaborasi", "Konten kolaborasi dengan mitra, komunitas, sekolah, atau nasabah paling sering menjadi viral."),
