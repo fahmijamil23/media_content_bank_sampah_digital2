@@ -30,7 +30,7 @@ def pindah(nama_halaman):
 # ---------- Gaya tampilan (CSS) ----------
 st.markdown(f"""
 <style>
-.block-container {{ padding-top: 2rem; max-width: 1100px; }}
+.block-container {{ padding-top: 2rem; padding-left: 4rem; padding-right: 4rem; max-width: 1500px; }}
 .hero {{
     background: linear-gradient(135deg, {HIJAU_GELAP} 0%, {HIJAU_TUA} 55%, {HIJAU_MUDA} 100%);
     border-radius: 24px; padding: 36px 40px; color: white;
@@ -58,7 +58,7 @@ st.markdown(f"""
 .sub-seksi {{ color: #5b6b54; margin-bottom: 14px; }}
 .kartu {{
     background: white; border: 1px solid #D9EBC8; border-left: 6px solid {HIJAU_MUDA};
-    border-radius: 16px; padding: 18px 20px; margin-bottom: 14px; min-height: 150px;
+    border-radius: 16px; padding: 18px 20px; margin-bottom: 14px; min-height: 210px;
     box-shadow: 0 2px 8px rgba(46,139,10,0.06);
     transition: transform .2s ease, box-shadow .2s ease;
 }}
@@ -79,6 +79,16 @@ st.markdown(f"""
 .hasil .besar {{ font-size: 3rem; font-weight: 800; }}
 .footer {{ text-align: center; color: #7a8a72; font-size: 0.85rem; margin-top: 36px; }}
 div.stButton > button {{ border-radius: 999px; padding: 0.6rem 1.6rem; font-weight: 700; }}
+.terbaik {{
+    background: white; border: 1px solid #D9EBC8; border-top: 6px solid {HIJAU_MUDA};
+    border-radius: 16px; padding: 16px 18px; min-height: 140px;
+    box-shadow: 0 2px 8px rgba(46,139,10,0.06);
+    transition: transform .2s ease, box-shadow .2s ease;
+}}
+.terbaik:hover {{ transform: translateY(-4px); box-shadow: 0 10px 20px rgba(46,139,10,0.18); }}
+.terbaik .aspek {{ color: #5b6b54; font-size: 0.85rem; }}
+.terbaik .nilai {{ color: {HIJAU_TUA}; font-size: 1.7rem; font-weight: 800; margin: 4px 0 8px 0; }}
+.terbaik .ket {{ color: #3E4A39; font-size: 0.85rem; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -128,11 +138,33 @@ def halaman_beranda():
     # --- Angka ringkas ---
     s1, s2, s3 = st.columns(3)
     s1.markdown('<div class="stat"><div class="angka">72</div><div class="label">postingan dipelajari (2025)</div></div>', unsafe_allow_html=True)
-    s2.markdown('<div class="stat"><div class="angka">29%</div><div class="label">konten kolaborasi masuk kategori viral</div></div>', unsafe_allow_html=True)
-    s3.markdown('<div class="stat"><div class="angka">0%</div><div class="label">konten informasi & ucapan Hari Besar yang viral</div></div>', unsafe_allow_html=True)
+    s2.markdown('<div class="stat"><div class="angka">8</div><div class="label">postingan masuk kategori viral (10% teratas)</div></div>', unsafe_allow_html=True)
+    s3.markdown('<div class="stat"><div class="angka">4</div><div class="label">aspek konten dibandingkan: tipe, format, waktu, dan topik</div></div>', unsafe_allow_html=True)
+
+    # --- Tips konten berpeluang viral (isi dari versi lama) ---
+    st.markdown('<div class="judul-seksi">🏆 Tips Konten Berpeluang Viral</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="sub-seksi">Viral = masuk 10% engagement tertinggi (≥ 205 interaksi): 8 dari 72 postingan. '
+        'Peluang rata-rata 10%. Datanya sedikit, jadi ini pola, bukan jaminan.</div>',
+        unsafe_allow_html=True,
+    )
+    terbaik = [
+        ("Tipe konten", "Kolaborasi", 29, 14),
+        ("Format", "Feed", 13, 38),
+        ("Waktu posting", "Siang", 12, 48),
+        ("Topik", "Bank Sampah", 12, 32),
+    ]
+    kolom_terbaik = st.columns(4)
+    for kolom, (aspek, nilai, persen, n) in zip(kolom_terbaik, terbaik):
+        kolom.markdown(
+            f'<div class="terbaik"><div class="aspek">{aspek}</div>'
+            f'<div class="nilai">{nilai}</div>'
+            f'<div class="ket">{persen}% postingannya viral (dari {n} postingan)</div></div>',
+            unsafe_allow_html=True,
+        )
 
     # --- Tips viral ---
-    st.markdown('<div class="judul-seksi">💡 Tips Konten Berpotensi Viral</div>', unsafe_allow_html=True)
+    st.markdown('<div class="judul-seksi">💡 Saran Praktis untuk Tim Media</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-seksi">Dirangkum dari pola postingan BSD yang paling banyak mendapat respons.</div>', unsafe_allow_html=True)
 
     tips = [
@@ -141,9 +173,9 @@ def halaman_beranda():
         ("🎯", "Isi lebih penting dari format", "Feed, Reels, atau Carousel hasilnya mirip. Fokuskan tenaga pada topik dan pesan yang menarik."),
         ("♻️", "Coba seri Daur Ulang", "Topik daur ulang tampak menjanjikan, tapi datanya baru sedikit. Layak diuji 3 sampai 5 postingan."),
     ]
-    kol = st.columns(2)
+    kol = st.columns(4)
     for i, (ikon, judul, isi) in enumerate(tips):
-        kol[i % 2].markdown(
+        kol[i].markdown(
             f'<div class="kartu"><div class="ikon">{ikon}</div><h4>{judul}</h4><p>{isi}</p></div>',
             unsafe_allow_html=True,
         )
@@ -165,7 +197,11 @@ def halaman_beranda():
         unsafe_allow_html=True,
     )
     st.markdown(f"**{persen}%** dari {jumlah} postingan tipe *{pilihan}* masuk kategori viral (10% teratas).")
-
+    rata_rata = 8 / 72 * 100
+    if persen > 0:
+        st.markdown(f"Itu sekitar **{persen / rata_rata:.1f}x lebih sering viral** dibanding rata-rata semua postingan ({rata_rata:.0f}%).")
+    else:
+        st.markdown("Belum ada postingan tipe ini yang viral di data 2025.")
     # --- Disclaimer ---
     st.markdown(f'<div class="disclaimer">⚠️ {DISCLAIMER}</div>', unsafe_allow_html=True)
 
