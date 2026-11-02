@@ -18,7 +18,7 @@ def muat():
 A = muat()
 Q = A["kuartil"]
 
-# Warna sesuai logo & website BSD
+# Warna sesuai logo & website Bank Sampah Digital
 HIJAU_TUA = "#2E8B0A"
 HIJAU_GELAP = "#0A7A00"
 HIJAU_MUDA = "#8DB821"
@@ -110,7 +110,7 @@ def logo_base64(path="Logo_Bank_Sampah_Digital.png"):
 
 DISCLAIMER = (
     "<b>Catatan:</b> Angka di sini adalah <b>perkiraan</b> berdasarkan 72 postingan "
-    "Instagram BSD tahun 2025, jadi bukan jaminan hasil. Makin banyak postingan yang "
+    "Instagram Bank Sampah Digital tahun 2025, jadi bukan jaminan hasil. Makin banyak postingan yang "
     "kita catat, makin tepat perkiraannya. Anggap ini sebagai <b>panduan arah</b> "
     "untuk membantu memilih konten, lalu tetap uji langsung di lapangan."
 )
@@ -140,7 +140,7 @@ def halaman_beranda():
     with c1:
         st.button("🚀 Mulai Prediksi", type="primary", on_click=pindah, args=("prediksi",))
     with c2:
-        st.link_button("🌐 Website BSD", "https://banksampahdigital.com/")
+        st.link_button("🌐 Website Bank Sampah Digital", "https://banksampahdigital.com/")
 
     # --- Angka ringkas ---
     s1, s2, s3 = st.columns(3)
@@ -172,7 +172,7 @@ def halaman_beranda():
 
     # --- Tips viral ---
     st.markdown('<div class="judul-seksi">💡 Saran Praktis untuk Tim Media</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-seksi">Dirangkum dari pola postingan BSD yang paling banyak mendapat respons.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sub-seksi">Dirangkum dari pola postingan Bank Sampah Digital yang paling banyak mendapat respons.</div>', unsafe_allow_html=True)
 
     tips = [
         ("🤝", "Ajak berkolaborasi", "Konten kolaborasi dengan mitra, komunitas, sekolah, atau nasabah paling sering menjadi viral."),
